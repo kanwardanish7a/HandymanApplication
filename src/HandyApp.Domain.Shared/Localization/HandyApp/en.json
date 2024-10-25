@@ -1,0 +1,52 @@
+{
+  "Culture": "en",
+  "Texts": {
+    "AppName": "HandyApp",
+    "Menu:Home": "Home",
+    "LongWelcomeMessage": "Welcome to HandyApp, where you can fix anything",
+    "Welcome": "Welcome",
+    "Menu:BookStore": "Book Store",
+    "Menu:Handy": "Handy",
+    "Menu:Books": "Books",
+    "Menu:Sellers": "Sellers",
+    "Menu:Buyers": "Buyers",
+    "Menu:Services": "Services",
+    "Actions": "Actions",
+    "Close": "Close",
+    "Delete": "Delete",
+    "Edit": "Edit",
+    "PublishDate": "Publish date",
+    "NewBook": "New book",
+    "NewSeller": "New seller",
+    "NewBuyer": "New buyer",
+    "NewService": "New service",
+    "Name": "Name",
+    "Type": "Type",
+    "Price": "Price",
+    "CreationTime": "Creation time",
+    "AreYouSure": "Are you sure?",
+    "AreYouSureToDelete": "Are you sure you want to delete this item?",
+    "Enum:BookType.0": "Undefined",
+    "Enum:BookType.1": "Adventure",
+    "Enum:BookType.2": "Biography",
+    "Enum:BookType.3": "Dystopia",
+    "Enum:BookType.4": "Fantastic",
+    "Enum:BookType.5": "Horror",
+    "Enum:BookType.6": "Science",
+    "Enum:BookType.7": "Science fiction",
+    "Enum:BookType.8": "Poetry",
+
+    "Enum:ServiceType.Undefined": "Undefined",
+    "Enum:ServiceType.Plumbing": "Plumbing",
+    "Enum:ServiceType.Electrical": "Electrical",
+    "Enum:ServiceType.Carpentry": "Carpentry",
+    "Enum:ServiceType.Painting": "Painting",
+    "Enum:ServiceType.Landscaping": "Landscaping",
+    "Enum:ServiceType.Cleaning": "Cleaning",
+    "Enum:ServiceType.HVAC": "HVAC",
+    "Enum:ServiceType.Appliance Repair": "Appliance Repair"
+
+
+
+  }
+}

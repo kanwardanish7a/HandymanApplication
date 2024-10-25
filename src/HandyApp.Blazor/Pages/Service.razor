@@ -1,0 +1,45 @@
+﻿@page "/service"
+@using Volo.Abp.Application.Dtos
+@using HandyApp.Services
+@using HandyApp.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<HandyAppResource> L
+@inherits AbpCrudPageBase<IServiceAppService, ServiceDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateServiceDto>
+
+<Card>
+    <CardHeader>
+        <h2>@L["Services List"]</h2>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="ServiceDto"
+                  Data="Entities"
+                  ReadData="OnDataGridReadAsync"
+                  TotalItems="TotalCount"
+                  ShowPager="true"
+                  PageSize="PageSize">
+            <DataGridColumns>
+                <DataGridColumn TItem="ServiceDto"
+                                Field="@nameof(ServiceDto.ServiceName)"
+                                Caption="@L["ServiceName"]"></DataGridColumn>
+                <DataGridColumn TItem="ServiceDto"
+                                Field="@nameof(ServiceDto.ServiceCost)"
+                                Caption="@L["ServiceCost"]">
+                </DataGridColumn>
+                <DataGridColumn TItem="ServiceDto"
+                                Field="@nameof(ServiceDto.ServiceType)"
+                                Caption="@L["ServiceType"]">
+                    <DisplayTemplate>
+                        @L[$"Enum:ServiceType.{context.ServiceType}"]
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="ServiceDto"
+                                Field="@nameof(ServiceDto.CreationTime)"
+                                Caption="@L["CreationTime"]">
+                    <DisplayTemplate>
+                        @context.CreationTime.ToLongDateString()
+                    </DisplayTemplate>
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+    </CardBody>
+</Card>

@@ -1,0 +1,85 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.Account": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "HandyApp.Application": {
+      "path": "src/HandyApp.Application/HandyApp.Application.abppkg",
+      "folder": "src"
+    },
+    "HandyApp.Application.Tests": {
+      "path": "test/HandyApp.Application.Tests/HandyApp.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "HandyApp.MongoDB": {
+      "path": "src/HandyApp.MongoDB/HandyApp.MongoDB.abppkg",
+      "folder": "src"
+    },
+    "HandyApp.MongoDB.Tests": {
+      "path": "test/HandyApp.MongoDB.Tests/HandyApp.MongoDB.Tests.abppkg",
+      "folder": "test"
+    },
+    "HandyApp.Domain.Shared": {
+      "path": "src/HandyApp.Domain.Shared/HandyApp.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "HandyApp.Application.Contracts": {
+      "path": "src/HandyApp.Application.Contracts/HandyApp.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "HandyApp.HttpApi": {
+      "path": "src/HandyApp.HttpApi/HandyApp.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "HandyApp.HttpApi.Client": {
+      "path": "src/HandyApp.HttpApi.Client/HandyApp.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "HandyApp.TestBase": {
+      "path": "test/HandyApp.TestBase/HandyApp.TestBase.abppkg",
+      "folder": "test"
+    },
+    "HandyApp.Domain.Tests": {
+      "path": "test/HandyApp.Domain.Tests/HandyApp.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "HandyApp.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/HandyApp.HttpApi.Client.ConsoleTestApp/HandyApp.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "HandyApp.DbMigrator": {
+      "path": "src/HandyApp.DbMigrator/HandyApp.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "HandyApp.Blazor": {
+      "path": "src/HandyApp.Blazor/HandyApp.Blazor.abppkg",
+      "folder": "src"
+    },
+    "HandyApp.Domain": {
+      "path": "src/HandyApp.Domain/HandyApp.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

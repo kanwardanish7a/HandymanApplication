@@ -1,0 +1,19 @@
+﻿@page "/home"
+@inject NavigationManager NavigationManager
+
+<h3>Welcome to Handy</h3>
+<p>Please select your role:</p>
+<button @onclick="NavigateToBuyer">Buyer</button>
+<button @onclick="NavigateToSeller">Seller</button>
+
+@code {
+    private void NavigateToBuyer()
+    {
+        NavigationManager.NavigateTo("/buyer");
+    }
+
+    private void NavigateToSeller()
+    {
+        NavigationManager.NavigateTo("/seller");
+    }
+}
