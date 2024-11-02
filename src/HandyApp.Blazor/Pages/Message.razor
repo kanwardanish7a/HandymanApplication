@@ -1,0 +1,49 @@
+﻿@page "/message"
+@using HandyApp.Messages
+@using Volo.Abp.Application.Dtos
+@inject IMessageAppService MessageAppService
+@inject NavigationManager NavigationManager
+
+<Card>
+    <CardHeader>
+        <h2>Messages</h2>
+    </CardHeader>
+
+    <CardBody>
+        <DataGrid TItem="MessageDto"
+                  Data="@messages"
+                  TotalItems="@totalCount"
+                  ShowPager="true"
+                  PageSize="10">
+            <DataGridColumns>
+                <DataGridColumn TItem="MessageDto" Field="@nameof(MessageDto.Sender)" Caption="Sender"></DataGridColumn>
+                <DataGridColumn TItem="MessageDto" Field="@nameof(MessageDto.ReceivedDate)" Caption="Received Date">
+                    <DisplayTemplate>
+                        @context.ReceivedDate.ToLongDateString()
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="MessageDto" Field="@nameof(MessageDto.Content)" Caption="Message Content"></DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+
+        <!-- Return Button -->
+        <Button Class="btn btn-primary" OnClick="@GoBack">Return</Button>
+    </CardBody>
+</Card>
+
+@code {
+    private List<MessageDto> messages;
+    private int totalCount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await MessageAppService.GetListAsync(new PagedAndSortedResultRequestDto());
+        messages = result.Items.ToList();
+        totalCount = Convert.ToInt32(result.TotalCount);
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

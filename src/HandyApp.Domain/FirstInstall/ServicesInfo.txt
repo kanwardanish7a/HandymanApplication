@@ -5,4 +5,4 @@ House Painting,250,Painting
 Landscaping Design,300,Landscaping
 Cleaning Service,100,Cleaning
 HVAC Maintenance,220,HVAC
-Appliance Repair,180,ApplianceRepair
+ApplianceRepair,180,ApplianceRepair

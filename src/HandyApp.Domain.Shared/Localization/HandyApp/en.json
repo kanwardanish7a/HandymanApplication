@@ -44,7 +44,7 @@
     "Enum:ServiceType.Landscaping": "Landscaping",
     "Enum:ServiceType.Cleaning": "Cleaning",
     "Enum:ServiceType.HVAC": "HVAC",
-    "Enum:ServiceType.Appliance Repair": "Appliance Repair"
+    "Enum:ServiceType.ApplianceRepair": "Appliance Repair"
 
 
 

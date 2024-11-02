@@ -1,0 +1,49 @@
+﻿@page "/orderhistory"
+@using HandyApp.Orders
+@using Volo.Abp.Application.Dtos
+@inject IOrderAppService OrderAppService
+@inject NavigationManager NavigationManager
+
+<Card>
+    <CardHeader>
+        <h2>Past Requested Services</h2>
+    </CardHeader>
+
+    <CardBody>
+        <DataGrid TItem="OrderDto"
+                  Data="@orders"
+                  TotalItems="@totalCount"
+                  ShowPager="true"
+                  PageSize="10">
+            <DataGridColumns>
+                <DataGridColumn TItem="OrderDto" Field="@nameof(OrderDto.ServiceName)" Caption="Service Name"></DataGridColumn>
+                <DataGridColumn TItem="OrderDto" Field="@nameof(OrderDto.OrderDate)" Caption="Order Date">
+                    <DisplayTemplate>
+                        @context.OrderDate.ToLongDateString()
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="OrderDto" Field="@nameof(OrderDto.Status)" Caption="Status"></DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+
+        <!-- Return Button -->
+        <Button Class="btn btn-primary" OnClick="@GoBack">Return</Button>
+    </CardBody>
+</Card>
+
+@code {
+    private List<OrderDto> orders;
+    private int totalCount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await OrderAppService.GetListAsync(new PagedAndSortedResultRequestDto());
+        orders = result.Items.ToList();
+        totalCount = Convert.ToInt32(result.TotalCount);
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

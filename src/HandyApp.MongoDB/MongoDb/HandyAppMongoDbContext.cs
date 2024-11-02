@@ -4,6 +4,8 @@ using MongoDB.Driver;
 using HandyApp.Services;
 using HandyApp.Buyer;
 using HandyApp.Seller;
+using HandyApp.Messages;
+using HandyApp.Orders;
 
 namespace HandyApp.MongoDB;
 
@@ -18,6 +20,9 @@ public class HandyAppMongoDbContext : AbpMongoDbContext
     public IMongoCollection<Service> Services => Collection<Service>();
     public IMongoCollection<BuyerProfile> Buyers => Collection<BuyerProfile>();
     public IMongoCollection<SellerProfile> Sellers => Collection<SellerProfile>();
+    public IMongoCollection<Message> Messages => Collection<Message>();
+    public IMongoCollection<Order> Orders => Collection<Order>();
+    //public IMongoCollection<SellerProfile> Sellers => Collection<SellerProfile>();
 
 
 

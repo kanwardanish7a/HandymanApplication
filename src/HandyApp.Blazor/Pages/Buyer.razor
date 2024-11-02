@@ -1,7 +1,34 @@
 ﻿@page "/buyer"
+@using Microsoft.AspNetCore.Components.Routing
+@inject NavigationManager Navigation
 
-<h2>Buyer</h2>
+<Card>
+    <CardHeader>
+        <h2>Buyer Dashboard</h2>
+    </CardHeader>
+
+    <CardBody>
+        <div class="buyer-options">
+            <Button class="btn btn-primary" @onclick="NavigateToBrowseServices">Browse Services</Button>
+            <Button class="btn btn-secondary" @onclick="NavigateToOrderHistory">Past Requested Services</Button>
+            <Button class="btn btn-info" @onclick="NavigateToMessages">Messages</Button>
+        </div>
+    </CardBody>
+</Card>
 
 @code {
-    // Add logic for Buyer page here
+    private void NavigateToBrowseServices()
+    {
+        Navigation.NavigateTo("/service"); // Navigates to Service.razor
+    }
+
+    private void NavigateToOrderHistory()
+    {
+        Navigation.NavigateTo("/orderhistory"); // Navigates to OrderHistory.razor
+    }
+
+    private void NavigateToMessages()
+    {
+        Navigation.NavigateTo("/message"); // Navigates to Message.razor
+    }
 }
