@@ -16,13 +16,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HandyApp</title>
     <base href="~/" />
-    
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+
+    <!-- ABP Global Styles -->
     <abp-style-bundle name="@BlazorLeptonXLiteThemeBundles.Styles.Global" />
-    
 </head>
 <body class="abp-application-layout @rtl">
+    <!-- Blazor App -->
     <component type="typeof(App)" render-mode="Server" />
 
+    <!-- Blazor Error UI -->
     <div id="blazor-error-ui">
         <environment include="Staging,Production">
             An error has occurred. This application may no longer respond until reloaded.
@@ -34,7 +39,7 @@
         <a class="dismiss">🗙</a>
     </div>
 
-    
+    <!-- ABP Global Scripts -->
     <abp-script-bundle name="@BlazorLeptonXLiteThemeBundles.Scripts.Global" />
 </body>
 </html>

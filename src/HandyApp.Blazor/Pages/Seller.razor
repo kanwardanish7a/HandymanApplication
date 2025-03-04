@@ -1,7 +1,118 @@
 ﻿@page "/seller"
+@using Microsoft.AspNetCore.Components.Routing
+@inject NavigationManager Navigation
 
-<h2>Seller</h2>
+<Card>
+    <CardHeader>
+        <h2>Welcome to Your Seller Dashboard</h2>
+        <div class="flex items-center gap-2">
+            <span class="text-muted">Status:</span>
+            <Button Class="@GetStatusButtonClass()" @onclick="ToggleStatus">
+                <i class="@GetStatusIcon() me-2"></i> @sellerStatus
+            </Button>
+        </div>
+    </CardHeader>
+
+    <CardBody>
+        <!-- Buttons Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <!-- View Orders Button -->
+            <Button Class="btn btn-primary" @onclick="NavigateToOrderHistory">
+                <i class="fas fa-history me-2"></i> View Orders
+            </Button>
+
+            <!-- Manage Gigs Button -->
+            <Button Class="btn btn-success" @onclick="NavigateToManageGigs">
+                <i class="fas fa-tools me-2"></i> Manage Gigs
+            </Button>
+
+            <!-- Messages Button -->
+            <Button Class="btn btn-info" @onclick="NavigateToMessages">
+                <i class="fas fa-comments me-2"></i> Messages
+            </Button>
+        </div>
+
+        <!-- DataGrid for Recent Activity (Optional) -->
+        <div class="mt-6">
+            <h3 class="mb-4">Recent Activity</h3>
+            <DataGrid TItem="ActivityDto"
+                      Data="@recentActivity"
+                      TotalItems="@totalActivityCount"
+                      ShowPager="true"
+                      PageSize="5">
+                <DataGridColumns>
+                    <DataGridColumn TItem="ActivityDto" Field="@nameof(ActivityDto.Type)" Caption="Type"></DataGridColumn>
+                    <DataGridColumn TItem="ActivityDto" Field="@nameof(ActivityDto.Description)" Caption="Description"></DataGridColumn>
+                    <DataGridColumn TItem="ActivityDto" Field="@nameof(ActivityDto.Date)" Caption="Date">
+                        <DisplayTemplate>
+                            @context.Date.ToShortDateString()
+                        </DisplayTemplate>
+                    </DataGridColumn>
+                </DataGridColumns>
+            </DataGrid>
+        </div>
+    </CardBody>
+</Card>
 
 @code {
-    // Add logic for Seller page here
+    // Seller Status
+    private string sellerStatus = "Offline";
+
+    private void ToggleStatus()
+    {
+        sellerStatus = sellerStatus == "Online" ? "Offline" : "Online";
+    }
+
+    private string GetStatusButtonClass()
+    {
+        return sellerStatus == "Online"
+            ? "btn btn-success"
+            : "btn btn-secondary";
+    }
+
+    private string GetStatusIcon()
+    {
+        return sellerStatus == "Online" ? "fas fa-circle" : "fas fa-circle";
+    }
+
+    // Navigation Methods
+    private void NavigateToOrderHistory()
+    {
+        Navigation.NavigateTo("/orderhistory");
+    }
+
+    private void NavigateToManageGigs()
+    {
+        Navigation.NavigateTo("/managegigs");
+    }
+
+    private void NavigateToMessages()
+    {
+        Navigation.NavigateTo("/message");
+    }
+
+    // Recent Activity Data
+    private List<ActivityDto> recentActivity = new();
+    private int totalActivityCount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulate fetching recent activity data
+        recentActivity = new List<ActivityDto>
+        {
+            new ActivityDto { Type = "Order Received", Description = "New order #5678", Date = DateTime.Now.AddDays(-1) },
+            new ActivityDto { Type = "Gig Updated", Description = "Updated gig 'Web Development'", Date = DateTime.Now.AddDays(-3) },
+            new ActivityDto { Type = "Message Received", Description = "New message from Jane Doe", Date = DateTime.Now.AddDays(-2) }
+        };
+
+        totalActivityCount = recentActivity.Count;
+    }
+
+    // Activity DTO Class
+    public class ActivityDto
+    {
+        public string Type { get; set; }
+        public string Description { get; set; }
+        public DateTime Date { get; set; }
+    }
 }

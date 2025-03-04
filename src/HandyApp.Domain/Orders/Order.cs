@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Entities.Auditing;
+using static HandyApp.Enums;
 
 namespace HandyApp.Orders
 {
@@ -19,11 +20,5 @@ namespace HandyApp.Orders
         public OrderStatus Status { get; set; } // Current status of the order
     }
 
-    public enum OrderStatus
-    {
-        Pending,
-        InProgress,
-        Completed,
-        Cancelled
-    }
+   
 }

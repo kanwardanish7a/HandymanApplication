@@ -7,9 +7,11 @@
 <Card>
     <CardHeader>
         <h2>Past Requested Services</h2>
+        <span class="text-muted">Total: @totalCount</span>
     </CardHeader>
 
     <CardBody>
+        <!-- DataGrid for Orders -->
         <DataGrid TItem="OrderDto"
                   Data="@orders"
                   TotalItems="@totalCount"
@@ -19,15 +21,25 @@
                 <DataGridColumn TItem="OrderDto" Field="@nameof(OrderDto.ServiceName)" Caption="Service Name"></DataGridColumn>
                 <DataGridColumn TItem="OrderDto" Field="@nameof(OrderDto.OrderDate)" Caption="Order Date">
                     <DisplayTemplate>
-                        @context.OrderDate.ToLongDateString()
+                        <span class="text-primary">@context.OrderDate.ToLongDateString()</span>
                     </DisplayTemplate>
                 </DataGridColumn>
-                <DataGridColumn TItem="OrderDto" Field="@nameof(OrderDto.Status)" Caption="Status"></DataGridColumn>
+                <DataGridColumn TItem="OrderDto" Field="@nameof(OrderDto.Status)" Caption="Status">
+                    <DisplayTemplate>
+                        <span class="badge @GetStatusBadgeClass(context.Status)">
+                            @context.Status
+                        </span>
+                    </DisplayTemplate>
+                </DataGridColumn>
             </DataGridColumns>
         </DataGrid>
 
         <!-- Return Button -->
-        <Button Class="btn btn-primary" OnClick="@GoBack">Return</Button>
+        <div class="flex justify-center mt-6">
+            <Button Class="btn btn-primary" OnClick="GoBack">
+                <i class="fas fa-arrow-left me-2"></i>Return
+            </Button>
+        </div>
     </CardBody>
 </Card>
 
@@ -45,5 +57,16 @@
     private void GoBack()
     {
         NavigationManager.NavigateTo("/");
+    }
+
+    private string GetStatusBadgeClass(OrderStatus status)
+    {
+        return status switch
+        {
+            OrderStatus.Completed => "badge-success",
+            OrderStatus.Pending => "badge-warning",
+            OrderStatus.Cancelled => "badge-danger",
+            _ => "badge-secondary"
+        };
     }
 }
